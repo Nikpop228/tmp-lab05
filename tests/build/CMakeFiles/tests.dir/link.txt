@@ -1,1 +1,0 @@
-/usr/sbin/c++ -Wl,--dependency-file=CMakeFiles/tests.dir/link.d CMakeFiles/tests.dir/tests.cpp.o -o tests  -lTransaction -lAccount lib/libgtest.a lib/libgmock.a lib/libgtest.a
