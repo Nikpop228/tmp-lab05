@@ -18,8 +18,7 @@ jobs:
     steps:
     - name: Updating
       run: |
-       sudo apt update -y
-       sudo apt upgrade -y
+       sudo apt install cmake -y
 
     - uses: actions/checkout@v4
     - name: Configure CMake
