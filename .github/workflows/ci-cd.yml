@@ -32,4 +32,4 @@ jobs:
       run: ctest -C ${{env.BUILD_TYPE}}
 
     - name: Run tests
-      run: ${{github.workspace}}/build/tests/tests && ctest --output-on-failure
+      run: ${{github.workspace}}/build/tests/tests && cd ${{github.workspace}}/build/tests && ctest --output-on-failure 
