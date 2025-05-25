@@ -30,3 +30,6 @@ jobs:
     - name: Test
       working-directory: ${{github.workspace}}/build
       run: ctest -C ${{env.BUILD_TYPE}}
+
+    - name: Run tests
+      run: ${{github.workspace}}/build/tests/tests && ctest --output-on-failure
