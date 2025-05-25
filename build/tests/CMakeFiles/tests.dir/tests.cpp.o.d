@@ -1,8 +1,8 @@
 tests/CMakeFiles/tests.dir/tests.cpp.o: \
  /home/Nikpop228/workspace/projects/tmp-lab05/tests/tests.cpp \
  /usr/include/stdc-predef.h \
- /home/Nikpop228/workspace/projects/tmp-lab05/tests/../banking/Transaction.h \
- /home/Nikpop228/workspace/projects/tmp-lab05/tests/../banking/Account.h \
+ /home/Nikpop228/workspace/projects/tmp-lab05/banking/Transaction.h \
+ /home/Nikpop228/workspace/projects/tmp-lab05/banking/Account.h \
  /home/Nikpop228/workspace/projects/tmp-lab05/googletest/googletest/include/gtest/gtest.h \
  /usr/include/c++/15/cstddef \
  /usr/include/c++/15/x86_64-redhat-linux/bits/c++config.h \

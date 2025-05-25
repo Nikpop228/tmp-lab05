@@ -96,10 +96,10 @@ tests_EXTERNAL_OBJECTS =
 tests/tests: tests/CMakeFiles/tests.dir/tests.cpp.o
 tests/tests: tests/CMakeFiles/tests.dir/build.make
 tests/tests: tests/CMakeFiles/tests.dir/compiler_depend.ts
-tests/tests: lib/libgtest.a
-tests/tests: lib/libgmock.a
 tests/tests: banking/libTransaction.a
 tests/tests: banking/libAccount.a
+tests/tests: lib/libgtest.a
+tests/tests: lib/libgmock.a
 tests/tests: lib/libgtest.a
 tests/tests: tests/CMakeFiles/tests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/Nikpop228/workspace/projects/tmp-lab05/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable tests"

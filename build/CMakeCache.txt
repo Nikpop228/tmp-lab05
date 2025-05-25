@@ -281,9 +281,6 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
-//Path to a program.
-GCOVR_EXECUTABLE:FILEPATH=GCOVR_EXECUTABLE-NOTFOUND
-
 //Use Abseil and RE2. Requires Abseil and RE2 to be separately
 // added to the build.
 GTEST_HAS_ABSL:BOOL=OFF
@@ -302,7 +299,7 @@ banking_IS_TOP_LEVEL:STATIC=OFF
 banking_SOURCE_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/banking
 
 //Value Computed by CMake
-gmock_BINARY_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/build/tests/googletest/googlemock
+gmock_BINARY_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/build/googletest/googlemock
 
 //Value Computed by CMake
 gmock_IS_TOP_LEVEL:STATIC=OFF
@@ -314,7 +311,7 @@ gmock_SOURCE_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/googletest/
 gmock_build_tests:BOOL=OFF
 
 //Value Computed by CMake
-googletest-distribution_BINARY_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/build/tests/googletest
+googletest-distribution_BINARY_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/build/googletest
 
 //Value Computed by CMake
 googletest-distribution_IS_TOP_LEVEL:STATIC=OFF
@@ -323,7 +320,7 @@ googletest-distribution_IS_TOP_LEVEL:STATIC=OFF
 googletest-distribution_SOURCE_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/googletest
 
 //Value Computed by CMake
-gtest_BINARY_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/build/tests/googletest/googletest
+gtest_BINARY_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/build/googletest/googletest
 
 //Value Computed by CMake
 gtest_IS_TOP_LEVEL:STATIC=OFF
@@ -348,13 +345,13 @@ gtest_force_shared_crt:BOOL=OFF
 gtest_hide_internal_symbols:BOOL=OFF
 
 //Value Computed by CMake
-tests_for_account_transaction_BINARY_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/build/tests
+tests_BINARY_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/build/tests
 
 //Value Computed by CMake
-tests_for_account_transaction_IS_TOP_LEVEL:STATIC=OFF
+tests_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-tests_for_account_transaction_SOURCE_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/tests
+tests_SOURCE_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/tests
 
 //Value Computed by CMake
 tests_libs_BINARY_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/build
@@ -562,7 +559,7 @@ _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
 cmake_package_name:INTERNAL=GTest
-generated_dir:INTERNAL=/home/Nikpop228/workspace/projects/tmp-lab05/build/tests/googletest/googletest/generated
+generated_dir:INTERNAL=/home/Nikpop228/workspace/projects/tmp-lab05/build/googletest/googletest/generated
 //ADVANCED property for variable: gmock_build_tests
 gmock_build_tests-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: gtest_build_samples

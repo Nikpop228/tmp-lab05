@@ -199,7 +199,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=tests_for_account_transaction
+CMAKE_PROJECT_NAME:STATIC=tests
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=1.16.0
@@ -281,6 +281,9 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Path to a program.
+GCOVR_EXECUTABLE:FILEPATH=GCOVR_EXECUTABLE-NOTFOUND
+
 //Use Abseil and RE2. Requires Abseil and RE2 to be separately
 // added to the build.
 GTEST_HAS_ABSL:BOOL=OFF
@@ -336,13 +339,13 @@ gtest_force_shared_crt:BOOL=OFF
 gtest_hide_internal_symbols:BOOL=OFF
 
 //Value Computed by CMake
-tests_for_account_transaction_BINARY_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/tests/build
+tests_BINARY_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/tests/build
 
 //Value Computed by CMake
-tests_for_account_transaction_IS_TOP_LEVEL:STATIC=ON
+tests_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-tests_for_account_transaction_SOURCE_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/tests
+tests_SOURCE_DIR:STATIC=/home/Nikpop228/workspace/projects/tmp-lab05/tests
 
 
 ########################

@@ -3,10 +3,10 @@ tests: \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o \
   /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o \
   CMakeFiles/tests.dir/tests.cpp.o \
-  ../lib/libgtest.a \
-  ../lib/libgmock.a \
   ../banking/libTransaction.a \
   ../banking/libAccount.a \
+  ../lib/libgtest.a \
+  ../lib/libgmock.a \
   ../lib/libgtest.a \
   /usr/lib/gcc/x86_64-redhat-linux/15/libstdc++.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
@@ -44,13 +44,13 @@ tests: \
 
 CMakeFiles/tests.dir/tests.cpp.o:
 
-../lib/libgtest.a:
-
-../lib/libgmock.a:
-
 ../banking/libTransaction.a:
 
 ../banking/libAccount.a:
+
+../lib/libgtest.a:
+
+../lib/libgmock.a:
 
 ../lib/libgtest.a:
 
