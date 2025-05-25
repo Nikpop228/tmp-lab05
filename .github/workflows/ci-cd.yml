@@ -16,9 +16,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Updating
-      run: |
-       sudo apt install cmake -y
 
     - uses: actions/checkout@v4
     - name: Configure CMake
