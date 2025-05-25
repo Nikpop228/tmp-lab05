@@ -34,6 +34,11 @@ jobs:
     - name: Run tests
       run: ${{github.workspace}}/build/tests/tests && cd ${{github.workspace}}/build/tests && ctest --output-on-failure 
 
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+        
     - name: npm install, make test-coverage
       run: |
         npm install
