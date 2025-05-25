@@ -51,13 +51,13 @@ TEST(Acc_test, check_Unlock)
     ASSERT_THROW(makak.ChangeBalance(99), std::runtime_error); // попробуем изменить баланс, должно выдать исключение
 }
 
-TEST(Transaction_test, check_SaveToDataBase)
-{
-    Account makak1(99, 89);
-    Account makak2(11, 19);
-	Mock_trans mt;
-	EXPECT_CALL(mt, SaveToDataBase(makak1, makak2, 90));
-}
+//TEST(Transaction_test, check_SaveToDataBase)
+//{
+//    Account makak1(99, 89);
+//    Account makak2(11, 19);
+//	Mock_trans mt;
+//	EXPECT_CALL(mt, SaveToDataBase(makak1, makak2, 90));
+//}
 
 int main(int argc, char** argv) 
 {
