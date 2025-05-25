@@ -38,12 +38,12 @@ jobs:
       run: ${{github.workspace}}/build/tests/tests && cd ${{github.workspace}}/build/tests && ctest --output-on-failure 
 
     - name: Coverage
-      working-directory: ${{runner.workspace}}/build/tests
+      working-directory: ${{github.workspace}}/build/tests
       shell: bash
       run: make coverage
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
-        path-to-lcov: ${{runner.workspace}}/build/tests/coverage.info
+        path-to-lcov: ${{github.workspace}}/build/tests/coverage.info
         github-token: ${{ secrets.GITHUB_TOKEN }}
