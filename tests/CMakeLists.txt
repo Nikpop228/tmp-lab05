@@ -9,6 +9,4 @@ enable_testing()
 
 add_executable(tests tests.cpp)
 
-add_subdirectory(googletest)
-
 target_link_libraries(tests Transaction Account gtest gmock)
