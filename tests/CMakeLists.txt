@@ -6,6 +6,9 @@ option(COVERAGE "Check coverage" ON)
 
 project(tests)
 
+target_compile_options(check PRIVATE --coverage)
+target_link_libraries(check --coverage)
+
 enable_testing()
 
 add_executable(tests tests.cpp)
@@ -13,10 +16,3 @@ add_executable(tests tests.cpp)
 target_link_libraries(tests Transaction Account gtest gmock)
 
 add_test(test tests)
-
-if (COVERAGE)
-  target_compile_options(check PRIVATE --coverage)
-  target_link_libraries(check --coverage)
-endif()
-
-#add_custom_target()
