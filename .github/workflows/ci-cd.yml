@@ -51,7 +51,9 @@ jobs:
       run: ${{github.workspace}}/build/tests/tests && cd ${{github.workspace}}/build/tests && ctest --output-on-failure 
 
     - name: Coverage
-      run: cpp-coveralls -b ${{github.workspace}}/build/tests
+      run: | 
+        cpp-coveralls --exclude third-party  --exclude banking  --exclude lib --exclude CMakeFiles
+        cpp-coveralls -b ${{github.workspace}}/build/tests
 
     # - name: Collect coverage into one XML report
     #   run: |
