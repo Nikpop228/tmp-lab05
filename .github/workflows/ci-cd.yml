@@ -28,7 +28,7 @@ jobs:
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
     - name: Test
-      working-directory: build${{github.workspace}}/build
+      working-directory: build
       run: tests
 
 
