@@ -52,7 +52,7 @@ jobs:
 
     - name: Collect coverage into one XML report
       run: |
-        gcovr --coveralls > coverage.xml
+        gcovr --coveralls > coverage.info
 
     # - name: Coverage
     #   run: |
