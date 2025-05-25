@@ -1,0 +1,2 @@
+/usr/sbin/ar qc libAccount.a CMakeFiles/Account.dir/Account.cpp.o
+/usr/sbin/ranlib libAccount.a
