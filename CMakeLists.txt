@@ -6,5 +6,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(tests_libs)
 
 add_subdirectory(banking)
-add_subdirectory(tests)
 add_subdirectory(googletest)
+add_subdirectory(tests)
