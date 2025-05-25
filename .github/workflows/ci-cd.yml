@@ -33,3 +33,11 @@ jobs:
 
     - name: Run tests
       run: ${{github.workspace}}/build/tests/tests && cd ${{github.workspace}}/build/tests && ctest --output-on-failure 
+
+    - name: npm install, make test-coverage
+      run: |
+        npm install
+        make test-coverage
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@v2
