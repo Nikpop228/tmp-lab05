@@ -5,8 +5,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(tests_libs)
 
-enable_testing()
-
 add_subdirectory(third-party/googletest)
 
 add_subdirectory(banking)
