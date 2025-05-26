@@ -21,4 +21,13 @@ add_executable(tests tests.cpp)
 
 target_link_libraries(tests Transaction Account gtest gmock)
 
+add_custom_command(OUTPUT cov-display
+    COMMAND lcov -d . -c -o "test.info" --keep-going
+    COMMAND lcov --remove test.info 'gtest*' '/usr/*' --output-file test.info
+    COMMAND genhtml test.info -o result
+    COMMENT "generate html"
+    )
+
+add_custom_target(cov-test DEPENDS cov-display)
+
 add_test(test tests)

@@ -28,14 +28,14 @@ jobs:
     #     sudo apt-get update
     #     sudo apt-get install -y lcov
 
-    - name: Set up Python 3.8 for gcovr
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.13
+    # - name: Set up Python 3.8 for gcovr
+    #   uses: actions/setup-python@v4
+    #   with:
+    #     python-version: 3.13
 
-    - name: Install dependencies
-      run: |
-        pip install cpp-coveralls
+    # - name: Install dependencies
+    #   run: |
+    #     pip install cpp-coveralls
 
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
@@ -51,9 +51,15 @@ jobs:
       run: ${{github.workspace}}/build/tests/tests && cd ${{github.workspace}}/build/tests && ctest --output-on-failure 
 
     - name: Coverage
-      run: | 
-        cpp-coveralls --exclude third-party  --exclude banking  --exclude lib --exclude CMakeFiles
-        cpp-coveralls -b ${{github.workspace}}/build/tests
+      run: |
+        cd build
+        make
+        tests/tests
+        make cov-test
+    # - name: Coverage
+    #   run: | 
+    #     cpp-coveralls --exclude third-party  --exclude banking  --exclude lib --exclude CMakeFiles
+    #     cpp-coveralls -b ${{github.workspace}}/build/tests
 
     # - name: Collect coverage into one XML report
     #   run: |
