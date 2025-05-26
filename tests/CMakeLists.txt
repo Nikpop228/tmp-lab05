@@ -1,33 +1,14 @@
 cmake_minimum_required(VERSION 3.16) 
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-#set(CMAKE_CXX_FLAGS " ${CMAKE_CXX_FLAGS} --coverage")
-#add_compile_options(--coverage)
-#set(CMAKE_C_FLAGS_PROFILE --coverage) 
-#set(CMAKE_CXX_FLAGS_PROFILE --coverage)
-
 
 project(tests)
-
-#if(CMAKE_BUILD_TYPE MATCHES Debug)
-#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage -O0 -g")
-#    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lgcov")
-#endif()
 
 enable_testing()
 
 add_executable(tests tests.cpp)
 
 target_link_libraries(tests Transaction Account gtest gmock)
-
-add_custom_command(OUTPUT cov-display
-    COMMAND lcov -d . -c -o "test.info" --keep-going
-    COMMAND lcov --remove test.info 'gtest*' '/usr/*' --output-file test.info
-    COMMAND genhtml test.info -o result
-    COMMENT "generate html"
-    )
-
-add_custom_target(cov-test DEPENDS cov-display)
 
 add_test(test tests)
