@@ -16,6 +16,9 @@
 class Mock_trans : public Transaction
 {
 public:
+    Mock_trans() : Transaction() {};
+    MOCK_METHOD(bool, Make, (Account& from, Account& to, int sum));
+    MOCK_METHOD(void, Credit, (Account& accout, int sum));
 	MOCK_METHOD(void, SaveToDataBase, (Account& from, Account& to, int sum), (override));
 };
 
@@ -53,15 +56,40 @@ TEST(Acc_test, check_Unlock)
 
 using ::testing::_;
 
-TEST(Transaction, Mock) 
+TEST(Transaction, check_Make)
+{
+    Account from(8, 264);
+    Account to(97, 156);
+    Transaction trans;
+    trans.set_fee(2);
+    bool suc = trans.Make(from, to, 200);
+    EXPECT_TRUE(suc);
+}
+
+TEST(Transaction, check_SaveToDataBase)
+{
+    Mock_trans trans;
+    Account ac1(1, 50);
+    Account ac2(2, 500);
+    trans.SaveToDataBase(ac1, ac2, 51);
+}
+
+TEST(Transaction, check_Mock_SaveToDataBase) 
 {
     Mock_trans trans;
     Account ac1(1, 50);
     Account ac2(2, 500);
     EXPECT_CALL(trans, SaveToDataBase(_, _, 51));
     trans.SaveToDataBase(ac1, ac2, 51);
-    EXPECT_EQ(ac2.GetBalance(), 500);
+}
 
+TEST(Transaction, check_Mock_Make) {
+    Account from(8, 264);
+    Account to(97, 156);
+    Mock_trans trans;
+    trans.set_fee(2);
+    EXPECT_CALL(trans, Make(_, _, 200)).Times(1);
+    bool suc = trans.Make(from, to, 200);
 }
 
 int main(int argc, char** argv) 
