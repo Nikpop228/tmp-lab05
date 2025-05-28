@@ -3,6 +3,8 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
+using ::testing::_;
+
  class Mock_acc : public Account
  {
  public:
@@ -17,19 +19,21 @@ class Mock_trans : public Transaction
 {
 public:
     Mock_trans() : Transaction() {};
-    MOCK_METHOD(bool, Make, (Account& from, Account& to, int sum));
-    MOCK_METHOD(void, Credit, (Account& accout, int sum));
 	MOCK_METHOD(void, SaveToDataBase, (Account& from, Account& to, int sum), (override));
 };
 
-TEST(Acc_test, check_GetBalance)
+//========================================================================================
+//                                    Обычные тесты
+//========================================================================================
+
+TEST(Account, GetBalance)
 {
     Account makak(38, 59);
     int balance = makak.GetBalance();
     EXPECT_EQ(balance, 59);
 }
 
-TEST(Acc_test, check_ChangeBalance)
+TEST(Account,ChangeBalance)
 {
     Account makak(38, 59);
     ASSERT_THROW(makak.ChangeBalance(98), std::runtime_error); // проверка на исключение при попытке добавить баланс (должно выдать)
@@ -39,13 +43,13 @@ TEST(Acc_test, check_ChangeBalance)
     EXPECT_EQ(balance, 98 + 59); // проверяем, изменился ли баланс
 }
 
-TEST(Acc_test, check_Lock)
+TEST(Account, Lock)
 {
     Account makak(38, 59);
     ASSERT_NO_THROW(makak.Lock()); // проверка на исключение после создания аккаунта (не должно выдать)
 }
 
-TEST(Acc_test, check_Unlock)
+TEST(Account, Unlock)
 {
     Account makak(38, 59);
     makak.Lock(); // разблокируем аккаунт
@@ -54,9 +58,7 @@ TEST(Acc_test, check_Unlock)
     ASSERT_THROW(makak.ChangeBalance(99), std::runtime_error); // попробуем изменить баланс, должно выдать исключение
 }
 
-using ::testing::_;
-
-TEST(Transaction, check_Make)
+TEST(Transaction, Make)
 {
     Account from(8, 264);
     Account to(97, 156);
@@ -66,34 +68,68 @@ TEST(Transaction, check_Make)
     EXPECT_TRUE(suc);
 }
 
-TEST(Transaction, check_SaveToDataBase)
+TEST(Transaction, SaveToDataBase)
 {
-    Mock_trans trans;
-    Account ac1(1, 50);
+    Transaction trans;
+    Account ac1(1, 200);
     Account ac2(2, 500);
-    trans.SaveToDataBase(ac1, ac2, 51);
+    bool suc = trans.Make(ac1, ac2, 150);
+    EXPECT_TRUE(suc);
 }
 
-TEST(Transaction, check_Mock_SaveToDataBase) 
+//========================================================================================//
+//                                    Мок тесты                                           //
+//========================================================================================//
+
+TEST(Mock_account, Lock)
 {
-    Mock_trans trans;
-    Account ac1(1, 50);
-    Account ac2(2, 500);
-    EXPECT_CALL(trans, SaveToDataBase(_, _, 51));
-    trans.SaveToDataBase(ac1, ac2, 51);
+    Mock_acc from(8, 264);
+    Mock_acc to(97, 156);
+    Transaction trans;
+
+    EXPECT_CALL(from, Lock()).Times(::testing::AtLeast(1));
+
+    bool suc = trans.Make(from, to, 200);
 }
 
-TEST(Transaction, check_Mock_Make) {
-    Account from(8, 264);
-    Account to(97, 156);
-    Mock_trans trans;
-    trans.set_fee(2);
-    EXPECT_CALL(trans, Make(_, _, 200)).Times(1);
+TEST(Mock_account, Unlock)
+{
+    Mock_acc from(8, 264);
+    Mock_acc to(97, 156);
+    Transaction trans;
+
+    EXPECT_CALL(from, Unlock()).Times(::testing::AtLeast(1));
+
+    bool suc = trans.Make(from, to, 200);
+}
+
+TEST(Mock_account, GetBalance)
+{
+    Mock_acc from(8, 264);
+    Mock_acc to(97, 156);
+    Transaction trans;
+
+    EXPECT_CALL(from, GetBalance()).Times(::testing::AtLeast(1));
+
+    bool suc = trans.Make(from, to, 200);
+}
+
+TEST(Mock_account, ChangeBalance)
+{
+    Mock_acc from(8, 264);
+    Mock_acc to(97, 156);
+    Transaction trans;
+
+    ON_CALL(to, GetBalance()).WillByDefault(::testing::Return(156));
+    ON_CALL(from, GetBalance()).WillByDefault(::testing::Return(264));
+    EXPECT_CALL(from, ChangeBalance(_)).Times(::testing::AtLeast(1));
+
     bool suc = trans.Make(from, to, 200);
 }
 
 int main(int argc, char** argv) 
 {
+    ::testing::FLAGS_gmock_verbose = "error";
 	::testing::InitGoogleMock(&argc, argv);
     ::testing::InitGoogleMock(&argc, argv);
 	return RUN_ALL_TESTS();
