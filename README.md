@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/github/Nikpop228/tmp-lab05/badge.svg)](https://coveralls.io/github/Nikpop228/tmp-lab05)
 
 ## Homework
 
